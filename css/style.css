@@ -1,0 +1,139 @@
+body{
+    background-color:rgb(214, 240, 245);
+}
+
+.flex{
+    display: flex;
+    position: absolute;
+    left: 30%;
+    top: 10%;
+    height: 80vh;
+}
+
+.circle{
+    /* display: inline-block; */
+    width: 700px;
+    height: 700px;
+    background-color: aliceblue;
+    border-radius: 50%;
+    box-shadow: 2px 2px 20px 0.1px rgba(0, 0, 0, 0.05);
+}
+
+.form{
+    /* display: inline-block; */
+    position: absolute;
+    width: 600px;
+    height: 610px;
+    left: 40px;
+    top: 40px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 2px 2px 20px 0.1px rgba(147, 226, 240, 0.473);
+}
+
+.inner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input{
+    /* display: block; */
+}
+
+input[type="radio"]{
+    display: inline-block;
+    margin-top: 5px;
+}
+
+input{
+    font-size: 20px;
+    padding: 10px;
+    outline: none;
+    border: 1px solid rgb(214, 240, 245);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-left: 150px;
+    margin-top: 5px;
+}
+
+.main-text{
+    margin-left: 150px;
+}
+
+label{
+    font-family: poppins;
+    color: teal;
+}
+
+h2{
+    margin-left: 250px;
+    color: teal;
+    
+}
+
+button{
+    border: none;
+    background-color: teal;
+    color: white;
+    padding: 20px 20px;
+    width: 270px;
+    border-radius: 5px;
+    margin-left: 150px;
+
+}
+
+button:hover{
+    cursor: pointer;
+    background: rgb(17, 175, 175);
+}
+
+p{
+    color: teal;
+    margin-left: 230px;
+}
+
+.socials{
+    display: flex;
+    margin-left: 215px;
+    margin-top: 5px;
+    font-size: 30px;
+}
+
+.facebook{
+    margin-right: 10px;
+    color: teal;
+}
+
+.facebook:hover{
+    cursor: pointer;
+    color: royalblue;
+}
+
+.twitter{
+    margin-right: 10px;
+    color: teal;
+}
+
+.twitter:hover{
+    cursor: pointer;
+    color: #1DA1F2;
+}
+.google{
+    margin-right: 10px;
+    color: teal;
+}
+
+.google:hover{
+    cursor: pointer;
+    color: red;
+}
+.apple{
+    margin-right: 10px;
+    color: teal;
+}
+
+.apple:hover{
+    cursor: pointer;
+    color: black;
+}
