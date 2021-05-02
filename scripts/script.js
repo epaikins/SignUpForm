@@ -7,15 +7,27 @@ let form = document.querySelector(".inner");
 let selectRole = document.querySelector("h5");
 let signText = document.querySelector('h3');
 let personValue;
+let data = {
+    role: "",
+    username: "",
+    email: "",
+    password: ""
+}
 
 
 function signUp() {
-    if(validate() && validatePassword()){
-        console.log(personValue, username.value, email.value, password.value, confirmPassword.value);
+    if (validate() && validatePassword()) {
+        data = {
+            role: personValue,
+            username: username.value,
+            email: email.value,
+            password: password.value
+        };
+        console.log(data);
         form.classList.add('hidden');
         reset();
     }
-    // reset();
+    return data;
 }
 
 function validateEmail(email) {
@@ -25,50 +37,62 @@ function validateEmail(email) {
 
 
 function validatePassword() {
+
+    let message = ""
+    // Validate Special Character
+    var characters = /[!@#$%^&*]/g;
+
     // Validate lowercase letters
     var lowerCaseLetters = /[a-z]/g;
-    if (password.value.match(lowerCaseLetters)) {
-        password.style.borderColor = "green";
-    } else {
-        password.style.borderColor = "red";
-        password.placeholder = "Invalid Password...";
-    }
 
-    // Validate capital letters
-    var upperCaseLetters = /[A-Z]/g;
-    if (password.value.match(upperCaseLetters)) {
-        password.style.borderColor = "green";
-    } else {
-        password.style.borderColor = "red";
-        password.placeholder = "Invalid Password...";
-    }
-
-    // Validate numbers
+        // Validate capital letters
+        var upperCaseLetters = /[A-Z]/g;
+    
+            // Validate numbers
     var numbers = /[0-9]/g;
-    if (password.value.match(numbers)) {
-        password.style.borderColor = "green";
-    } else {
+
+    if(password.value === ""){
         password.style.borderColor = "red";
-        password.placeholder = "Invalid Passwprd...";
+        password.value = ''
+        message = "Invalid Password";
+    }
+
+    else if (!password.value.match(characters)) {
+        password.style.borderColor = "red";
+        password.value = ''
+        message = "Include Special Characters";
+    }
+
+    else if (!password.value.match(lowerCaseLetters)) {
+        password.style.borderColor = "red";
+        password.value = ''
+        message = "Include lower Case characters";
+    }
+
+    else if (!password.value.match(upperCaseLetters)) {
+        password.style.borderColor = "red";
+        password.value = ''
+        message = "Include Upper Case characters";
+    }
+
+
+    else if (!password.value.match(numbers)) {
+        password.style.borderColor = "red";
+        password.value = '';
+        message = "Include Numbers";
     }
 
     // Validate length
-    if (password.value.length >= 6 && password.value.length <= 12) {} else {
+    else if (password.value.length < 6 || password.value.length > 12) {
         password.style.borderColor = "red";
-        password.placeholder = "Invalid Password...";
+        password.value = ''
+        message = "Must be between 6-12 character long";
     }
 
-
-    // Validate Special Character
-    var characters = /[!@#$%^&*]/g;
-    if (password.value.match(characters)) {
+    password.placeholder = message;
+    if (password.value.match(characters) && password.value.length >= 6 && password.value.length <= 12 && password.value.match(numbers) && password.value.match(upperCaseLetters) && password.value.match(lowerCaseLetters)) {
         password.style.borderColor = "green";
-    } else {
-        password.style.borderColor = "red";
-        password.placeholder = "Invalid Passwprd...";
-    }
 
-    if(password.value.match(characters) && password.value.length >= 6 && password.value.length <= 12 && password.value.match(numbers) && password.value.match(upperCaseLetters) && password.value.match(lowerCaseLetters)){
         return true;
     }
 
@@ -108,11 +132,9 @@ function validate() {
         confirmPassword.style.borderColor = "red";
         confirmPassword.placeholder = "Password must be the same";
 
-    }
-    else if(personValue === undefined){
+    } else if (personValue === undefined) {
         selectRole.classList.remove('hidden');
-    }
-    else if (username.value === "") {
+    } else if (username.value === "") {
         username.style.borderColor = "red";
         username.placeholder = "Invalid Username...";
     } else if (!validateEmail(email.value)) {
@@ -142,22 +164,22 @@ function reset() {
 }
 
 
-function facebook(){
- signText.innerText = "Signing Up with facebook..."
- form.classList.add("hidden");
+function facebook() {
+    signText.innerText = "Signing Up with facebook..."
+    form.classList.add("hidden");
 }
 
-function twitter(){
+function twitter() {
     signText.innerText = "Signing Up with twitter..."
     form.classList.add("hidden");
-   }
+}
 
-   function google(){
+function google() {
     signText.innerText = "Signing Up with google..."
     form.classList.add("hidden");
-   }
+}
 
-   function apple(){
+function apple() {
     signText.innerText = "Signing Up with apple..."
     form.classList.add("hidden");
-   }
+}
