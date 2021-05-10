@@ -122,7 +122,7 @@ function validate() {
         confirmPassword.placeholder = "Enter Password...";
 
         selectRole.classList.remove('hidden');
-    } else if (!validateEmail(email.value) && username.value === "" && password.value !== confirmPassword) {
+    } else if (!validateEmail(email.value) && username.value === "" && username.value.length>=2 && username.value.length <=10 && password.value !== confirmPassword) {
         email.style.borderColor = "red";
         email.placeholder = "Invalid Email...";
 
@@ -134,10 +134,10 @@ function validate() {
 
     } else if (personValue === undefined) {
         selectRole.classList.remove('hidden');
-    } else if (username.value === "") {
+    } else if (username.value === "" || username.value.length<2 || username.value.length >10) {
         username.style.borderColor = "red";
-        username.placeholder = "Invalid Username...";
-    } else if (!validateEmail(email.value)) {
+        username.placeholder = "Invalid Username (Must be 2 to 10 char)";
+    } else if (!validateEmail(email.value) || email.value === "") {
         email.style.borderColor = "red";
         email.placeholder = "Invalid Email...";
     } else if (password.value !== confirmPassword.value) {
